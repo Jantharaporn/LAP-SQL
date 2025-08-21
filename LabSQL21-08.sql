@@ -1,5 +1,5 @@
 --1 แสดงชื่อประเภทสินค้า ชื่อสินค้า และ ราคาสินค้า
---CARTESIAN PRODUCT เชื่อมโยงที่ค าสั่ง WHERE
+--CARTESIAN PRODUCT เชื่อมโยงที่คำสั่ง WHERE
 Select CategoryName, ProductName, UnitPrice
 From Products as P, Categories as C
 where P.CategoryID=C.CategoryID
