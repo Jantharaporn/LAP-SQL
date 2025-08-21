@@ -54,4 +54,13 @@ FROM Orders O
 join Customers C on O.CustomerID=C.CustomerID
 join Employees E on O.EmployeeID=E.EmployeeID
 
+--ต้องการชื่อบริษัทขนส่ง และจำนวนใบสั่งซื้อที่เกี่ยวข้อง
+Select s.CompanyName, count(*) จำนวนorders 
+from Shippers s join orders o on s.ShipperID = o.ShipVia
+Group By s.CompanyName
+Order By 2 desc
 
+--ต้องการรหัสสินค้า ชื่อสินค้า และจำนวนทั้งหมดที่ขายได้
+Select p.ProductID, p.ProductName, sum(Quantity) จำนวนที่ขายได้ 
+from Products p join [Order Details] od on p.ProductID = od.ProductID
+Group By p.ProductID, p.ProductName
