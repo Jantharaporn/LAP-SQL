@@ -8,7 +8,7 @@ FROM Employees AS e JOIN Orders AS o ON o.EmployeeID = e.EmployeeID
                     JOIN Categories AS c ON c.CategoryID = p.CategoryID
 WHERE c.CategoryName = 'Beverages' AND o.OrderDate >= '1997-01-01' AND o.OrderDate <  '1997-07-01' 
 GROUP BY e.EmployeeID, e.FirstName, e.LastName
-ORDER BY TotalAmount_Beverages DESC;
+ORDER BY TotalAmount_Beverages DESC
 
 -- 2.จงแสดงชื่อบริษัทตัวแทนจำหน่าย  เบอร์โทร เบอร์แฟกซ์ ชื่อผู้ติดต่อ จำนวนชนิดสินค้าประเภท Beverage ที่จำหน่าย โดยแสดงจำนวนสินค้า จากมากไปน้อย 3 อันดับแรก
 
