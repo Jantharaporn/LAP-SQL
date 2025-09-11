@@ -1,4 +1,14 @@
 -- 1.จงแสดงให้เห็นว่าพนักงานแต่ละคนขายสินค้าประเภท Beverage ได้เป็นจำนวนเท่าใด และเป็นจำนวนกี่ชิ้น เฉพาะครึ่งปีแรกของ 2540(ทศนิยม 4 ตำแหน่ง)
+SELECT e.EmployeeID,e.FirstName + ' ' + e.LastName AS EmployeeName,
+    CAST(SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)) AS DECIMAL(18,4)) AS TotalAmount_Beverages,
+    SUM(od.Quantity) AS TotalUnits_Beverages
+FROM Employees AS e JOIN Orders AS o ON o.EmployeeID = e.EmployeeID
+                    JOIN [Order Details] AS od ON od.OrderID = o.OrderID
+                    JOIN Products AS p ON p.ProductID = od.ProductID
+                    JOIN Categories AS c ON c.CategoryID = p.CategoryID
+WHERE c.CategoryName = 'Beverages' AND o.OrderDate >= '1997-01-01' AND o.OrderDate <  '1997-07-01' 
+GROUP BY e.EmployeeID, e.FirstName, e.LastName
+ORDER BY TotalAmount_Beverages DESC;
 
 -- 2.จงแสดงชื่อบริษัทตัวแทนจำหน่าย  เบอร์โทร เบอร์แฟกซ์ ชื่อผู้ติดต่อ จำนวนชนิดสินค้าประเภท Beverage ที่จำหน่าย โดยแสดงจำนวนสินค้า จากมากไปน้อย 3 อันดับแรก
 
