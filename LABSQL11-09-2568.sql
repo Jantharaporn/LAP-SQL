@@ -95,3 +95,11 @@ where ShipperID = 6
 
 Select * from Orders
 
+
+Select * from Employees
+--ต้องการข้อมูล รหัสและชื่อพนักงาน และรหัสและชื่อหัวหน้าพนักงาน
+Select emp.EmployeeID, emp.FirstName ชื่อพนักงาน,
+       boss.EmployeeID, boss.FirstName ชื่อหัวหน้า
+from Employees emp left outer join Employees boss
+on emp.ReportsTo = boss.EmployeeID
+
